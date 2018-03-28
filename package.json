@@ -1,0 +1,37 @@
+{
+  "name": "fcm-notification",
+  "version": "1.0.0",
+  "description": "Push notificaton for ios and android with nodejs",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smartnav/fcm-notification.git"
+  },
+  "keywords": [
+    "fcm",
+    "gcm",
+    "push",
+    "notification",
+    "push notification",
+    "web push",
+    "web notifications",
+    "web popup",
+    "firebase",
+    "firebase cloud messaging",
+    "google",
+    "android",
+    "ios",
+    "topic message",
+    "subcribe topic",
+    "parallel send"
+],
+  "author": "Navish Kumar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smartnav/fcm-notification/issues"
+  },
+  "homepage": "https://github.com/smartnav/fcm-notification",
+  "dependencies": {
+    "firebase-admin": "^5.11.0"
+  }
+}
