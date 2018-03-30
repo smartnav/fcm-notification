@@ -1,6 +1,6 @@
 {
   "name": "fcm-notification",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Push notificaton for ios and android with nodejs",
   "main": "index.js",
   "repository": {
@@ -24,7 +24,7 @@
     "topic message",
     "subcribe topic",
     "parallel send"
-],
+  ],
   "author": "Navish Kumar",
   "license": "MIT",
   "bugs": {
