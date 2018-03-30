@@ -1,19 +1,19 @@
-*The fcm plugin for push notificaton on Android, ios and web.
+#### The fcm plugin for push notificaton on Android, ios and web.
 
 
 
-####   fcm-notification 
+###   fcm-notification 
 New reliesed of firebase team with admin.messaging()  to send push notification to iOS, Android and web, March 21, 2018. 
  
  ![](https://user-images.githubusercontent.com/19702085/38019338-efe70d6a-3294-11e8-9668-3de48e2af7af.png "ddd")
 
-###Usage
+### Usage
 We tried to make this plugin as user (developer) friendly as possible, but if anything is unclear, please submit any questions as issues on GitHub: https://github.com/smartnav/fcm-notification/issues
 
 ###Install from NPM
 
     $ npm install fcm-notification --save
-#### Examples
+### Examples
 
 **Before starting you need to download privatekey.json file from  **  [This link](https://console.firebase.google.com/project/_/settings/serviceaccounts/adminsdk "Service account tab")
 
@@ -23,10 +23,8 @@ Check Steps:
 - Add this file in your project's workspace
 - Import that file with a require('path/to/privatekey.json') style call and pass the object to the FCM constructor
 
-#### Start:
-
-
-###### With registration token
+### Start:
+### With registration token
 
 
 
@@ -56,10 +54,10 @@ FCM.send(message, function(err, response) {
 })
 ```
 
-#### Send to a topic
+### Send to a topic
 FCM topic messaging allows you to send a message to multiple devices that have opted in to a particular topic.
 But before this we need to subscribe to topic.
-###### Subscribe to topic
+### Subscribe to topic
 ```js
 var fcm = require('fcm-notification');
 var FCM = new fcm('path/to/privatekey.json');
@@ -75,7 +73,7 @@ FCM.subscribeToTopic(tokens, 'TopicName', function(err, response) {
 ```
 
 
-###### Unsubscribe to topic
+### Unsubscribe to topic
 ```js
 var fcm = require('fcm-notification');
 var FCM = new fcm('path/to/privatekey.json');
@@ -90,7 +88,7 @@ FCM.unsubscribeFromTopic(tokens, 'TopicName', function(err, response) {
 })
 ```
 
-###### Send push to topic
+### Send push to topic
 ```js
 var fcm = require('fcm-notification');
 var FCM = new fcm('path/to/privatekey.json');
@@ -117,11 +115,37 @@ FCM.send(message, function(err, response) {
 })
 ```
 
+### Send push to multiple topics
+```js
+var fcm = require('fcm-notification');
+var FCM = new fcm('path/to/privatekey.json');
+var Topics = ['Topic one',  '..',  'Topic n'];
+
+
+var message = {
+	  data: { 
+			score: '850',
+			time: '2:45'
+	  },
+	  notification:{
+			title : 'Title name',
+			body : 'Test body..'
+	  }
+};
+FCM.sendToMultipleTopic(message, Topics,  function(err, response) {
+    if(err){
+        console.log('error found', err);
+    }else {
+        console.log('response here', response);
+    }
+})
+```
+
 ### Defining the message
 
 It is possible to set android, apns, webpush and notification fields on the same message. FCM service will take all specified parameters into account and customize the message for each platform. However, a message must contain exactly one of the token, topic or condition fields. It is an error to specify zero or multiple fields.
 
-###### Android-specific fields 
+### Android-specific fields 
 
 ```js
 var message = {
@@ -140,7 +164,7 @@ var message = {
 
 ```
 
-###### APNS-specific fields (IOS)
+### APNS-specific fields (IOS)
 ```js
 var message = {
   android: {
@@ -158,7 +182,7 @@ var message = {
 
 ```
 
-###### WebPush-specific fields
+### WebPush-specific fields
 
 ```js
 var message = {
@@ -174,7 +198,7 @@ var message = {
 
 ```
 
-###### Putting it all together
+### Putting it all together
 
 A message may contain configuration parameters for multiple device platforms. This means it is possible to include android, apns and webpush fields in the same message. The FCM service customizes the message for each target platform when delivering. The following example shows how a notification has been customized for Android and iOS platforms:
 
