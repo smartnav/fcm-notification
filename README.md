@@ -17,6 +17,8 @@ We tried to make this plugin as user (developer) friendly as possible, but if an
 
 **Before starting you need to download privatekey.json file from  **  [This link](https://console.firebase.google.com/project/_/settings/serviceaccounts/adminsdk "Service account tab")
 
+ ![](https://user-images.githubusercontent.com/19702085/46529601-a7390300-c8b4-11e8-9427-fe02505bea6b.gif "ddd")
+
 Check Steps:
 - Go Choose a project to continue to the Firebase console - If already have then click on it otherwise create new one.
 - Go to Service account tab and generate new private key (In node.js)
@@ -56,7 +58,7 @@ FCM.send(message, function(err, response) {
 
 ### Send to multiple tokens
 
-```
+```js
 var fcm = require('fcm-notification');
 var Tokens = [ 'token1 here', '....', 'token n here'];
 var FCM = new fcm('path/to/privatekey.json');
