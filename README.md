@@ -73,7 +73,7 @@ var message = {
     body : 'Test message by navish'
   }
 };
-FCM.sendToMultipleTopic(message, Tokens, function(err, response) {
+FCM.sendToMultipleToken(message, Tokens, function(err, response) {
     if(err){
         console.log('err--', err);
     }else {
