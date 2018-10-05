@@ -2,9 +2,9 @@
 
 
 
-###   fcm-notification 
-New reliesed of firebase team with admin.messaging()  to send push notification to iOS, Android and web, March 21, 2018. 
- 
+###   fcm-notification
+New reliesed of firebase team with admin.messaging()  to send push notification to iOS, Android and web, March 21, 2018.
+
  ![](https://user-images.githubusercontent.com/19702085/38019338-efe70d6a-3294-11e8-9668-3de48e2af7af.png "ddd")
 
 ### Usage
@@ -24,13 +24,13 @@ Check Steps:
 - Import that file with a require('path/to/privatekey.json') style call and pass the object to the FCM constructor
 
 ### Start:
-### With registration token
+### Send to single token
 
 
 
 ```js
 var fcm = require('fcm-notification');
-var FCM = new fcm('path/to/privatekey.json'); 
+var FCM = new fcm('path/to/privatekey.json');
 var token = 'token here';
 
 	var message = {
@@ -52,6 +52,34 @@ FCM.send(message, function(err, response) {
         console.log('response here', response);
     }
 })
+```
+
+### Send to multiple tokens
+
+```
+var fcm = require('fcm-notification');
+var Tokens = [ 'token1 here', '....', 'token n here'];
+var FCM = new fcm('path/to/privatekey.json');
+
+var message = {
+  data: {
+    score: '850',
+    time: '2:45'
+  },
+  notification:{
+    title : 'Navish',
+    body : 'Test message by navish'
+  }
+};
+FCM.sendToMultipleTopic(message, Tokens, function(err, response) {
+    if(err){
+        console.log('err--', err);
+    }else {
+        console.log('response-----', response);
+    }
+
+})
+
 ```
 
 ### Send to a topic
@@ -96,7 +124,7 @@ var TopicName = 'TopicName';
 
 
 var message = {
-  data: { 
+  data: {
     score: '850',
     time: '2:45'
   },
@@ -123,7 +151,7 @@ var Topics = ['Topic one',  '..',  'Topic n'];
 
 
 var message = {
-	  data: { 
+	  data: {
 			score: '850',
 			time: '2:45'
 	  },
@@ -145,7 +173,7 @@ FCM.sendToMultipleTopic(message, Topics,  function(err, response) {
 
 It is possible to set android, apns, webpush and notification fields on the same message. FCM service will take all specified parameters into account and customize the message for each platform. However, a message must contain exactly one of the token, topic or condition fields. It is an error to specify zero or multiple fields.
 
-### Android-specific fields 
+### Android-specific fields
 
 ```js
 var message = {
